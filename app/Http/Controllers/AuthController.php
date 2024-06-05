@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function index() {
         return view('login');
@@ -17,21 +17,18 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($credentials, $request->remember)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }
 
-        return back()-> with('error', 'Login gagal, Username dan Password tidak sesuai');
+        return back()-> with('error', 'Login gagal!');
     }
 
     public function logout(Request $request) {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect(route('login'));
     }
 }
