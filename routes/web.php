@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/login');
 });
+Route::get('/tesmodal', function () {
+    return view('tesmodal');
+});
 
 Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticate']);
@@ -25,3 +28,4 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/barang', [DashboardController::class, 'barang'])->middleware('auth');
+Route::get('/kategori-barang', [DashboardController::class, 'kategoriBarang'])->middleware('auth');

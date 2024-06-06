@@ -32,7 +32,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Daftar Barang</span>
+                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Kategori Barang</span>
                 </div>
             </li>
         </ol>
@@ -42,8 +42,8 @@
 
         <div class="relative overflow-x-auto sm:rounded-lg p-2">
             <div class="text-left mb-4">
-                <p class="text-lg font-semibold">Manage Barang</p>
-                <p class="text-sm ">Daftar barang yang terdapat pada Laboratorium Program Studi Teknik Elektro
+                <p class="text-lg font-semibold">Kategori Barang</p>
+                <p class="text-sm ">Daftar kateogri barang yang terdapat pada Laboratorium Program Studi Teknik Elektro
                 </p>
             </div>
 
@@ -70,7 +70,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M5 12h14m-7 7V5" />
                     </svg>
-                    Barang
+                    Kategori Barang
                 </button>
             </div>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -80,25 +80,10 @@
                             No
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Kode Barang
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Nama Barang
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Keterangan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Merk
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Jumlah
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Satuan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Kode Kategori
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Nama Kategori
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -106,32 +91,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $barang)
+                    @foreach ($kategoriBarangs as $kb)
                         <tr
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <td class="px-6 py-4"">
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->kode_barang }}
+                                {{ $kb->kode_kategori }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->nama_barang }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $barang->keterangan }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $barang->merk }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $barang->jumlah }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $barang->satuan }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $barang->kategori_id }}
+                                {{ $kb->nama_kategori }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"

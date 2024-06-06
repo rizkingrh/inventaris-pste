@@ -18,14 +18,17 @@ class BarangFactory extends Factory
     
     public function definition()
     {
+        static $brg = 1;
+        static $ktg = 1;
+        
         return [
-            'kode_barang' => $this->faker->unique()->numerify('BRG####'),
-            'nama_barang' => $this->faker->sentence(2),
-            'keterangan' => $this->faker->sentence(2),
-            'merk' => $this->faker->word,
-            'jumlah' => $this->faker->numberBetween(1, 100),
-            'satuan' => $this->faker->randomElement(['kg', 'gram', 'pcs', 'box']),
-            'kode_kategori' => $this->faker->numerify('KTG###')
+            'kode_barang' => 'BRG' . str_pad($brg++, 3, '0', STR_PAD_LEFT),
+            'nama_barang' => ucfirst($this->faker->word),
+            'keterangan' => $this->faker->randomElement(['Rusak', 'Baru', 'Hibah', 'Pengecekan']),
+            'merk' => ucfirst($this->faker->word),
+            'jumlah' => $this->faker->numberBetween(1, 50),
+            'satuan' => $this->faker->randomElement(['Unit', 'Pcs', 'Box']),
+            'kategori_id' => $this->faker->numberBetween(1, 5)
         ];
     }
 }
