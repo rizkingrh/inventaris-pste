@@ -10,4 +10,8 @@ class KategoriBarang extends Model
     use HasFactory;
     public $timestamps = false;
     protected $guarded = ['id'];
+
+    public function barang() {
+        return $this->hasMany(Barang::class);
+    }
 }

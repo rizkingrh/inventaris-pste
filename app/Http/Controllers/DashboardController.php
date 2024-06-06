@@ -13,15 +13,4 @@ class DashboardController extends Controller
         $tanggal = Carbon::now()->isoFormat('dddd, D MMMM YYYY');
         return view('dashboard', compact('tanggal'));
     }
-
-    public function barang() {
-        $barangs = Barang::all();
-        return view('barang', compact('barangs'));
-    }
-
-    public function kategoriBarang() {
-        $kategoriBarangs = KategoriBarang::all();
-        return view('kategoriBarang', compact('kategoriBarangs'));
-    }
-    
 }

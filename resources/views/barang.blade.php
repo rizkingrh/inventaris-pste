@@ -87,7 +87,7 @@
                             Satuan
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Kode Kategori
+                            Kategori
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
@@ -95,32 +95,32 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $barang)
+                    @foreach ($barangs as $item)
                         <tr
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <td class="px-6 py-4"">
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->kode_barang }}
+                                {{ $item->kode_barang }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->nama_barang }}
+                                {{ $item->nama_barang }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->keterangan }}
+                                {{ $item->keterangan }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->merk }}
+                                {{ $item->merk }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->jumlah }}
+                                {{ $item->jumlah }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->satuan }}
+                                {{ $item->satuan }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $barang->kategori_id }}
+                                {{ $item->kategoribarang->nama_kategori }}
                             </td>
                             <td class="px-6 py-4">
                                 <a href="#"

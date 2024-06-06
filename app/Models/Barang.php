@@ -9,4 +9,8 @@ class Barang extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    public function kategoribarang() {
+        return $this->belongsTo(KategoriBarang::class, 'kategori_id', 'id');
+    }
 }

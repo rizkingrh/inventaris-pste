@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriBarangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +29,7 @@ Route::post('/login', [AuthController::class, 'authenticate']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/barang', [DashboardController::class, 'barang'])->middleware('auth');
-Route::get('/kategori-barang', [DashboardController::class, 'kategoriBarang'])->middleware('auth');
+
+
+Route::resource('barang', BarangController::class)->middleware('auth');
+Route::resource('kategori-barang', KategoriBarangController::class)->middleware('auth');
