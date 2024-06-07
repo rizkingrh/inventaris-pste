@@ -65,110 +65,92 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             No
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Kode Barang
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Nama Barang
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Keterangan
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Merk
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Jumlah
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Satuan
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3">
                             Kategori
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Action
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barangs as $item)
+                    @foreach ($data as $item)
                         <tr
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <td class="px-6 py-4"">
+                            <td class="px-4 py-4"">
                                 {{ $loop->iteration }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->kode_barang }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->nama_barang }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->keterangan }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->merk }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->jumlah }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->satuan }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-4 py-4">
                                 {{ $item->kategoribarang->nama_kategori }}
                             </td>
-                            <td class="px-6 py-4">
-                                <a href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                <a href="#"
-                                    class="font-medium text-red-600 dark:text-blue-500 hover:underline">Delete</a>
+                            <td class="px-6 py-4 flex justify-center gap-1">
+                                <button type="button" data-modal-target="edit-modal-{{ $item->id }}"
+                                    data-modal-toggle="edit-modal-{{ $item->id }}"
+                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                    </svg>
+                                    <span class="sr-only">Edit</span>
+                                </button>
+                                <button type="button" data-modal-target="delete-modal-{{ $item->id }}"
+                                    data-modal-toggle="delete-modal-{{ $item->id }}"
+                                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />
+                                    </svg>
+                                    <span class="sr-only">Delete</span>
+                                </button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
-                aria-label="Table navigation">
-                <span class="text-sm font-normal text-gray-500 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
-                    <span class="font-semibold text-gray-900">1-10</span> of <span
-                        class="font-semibold text-gray-900">1000</span></span>
-                <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                    </li>
-                    <li>
-                        <a href="#" aria-current="page"
-                            class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </div>
-    @include('modals.createBarang')
+    @include('barang.modals.create')
 @endsection

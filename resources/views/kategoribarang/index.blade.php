@@ -151,7 +151,7 @@
                             <td class="px-6 py-4">
                                 {{ $item->nama_kategori }}
                             </td>
-                            <td class="px-6 py-4 flex gap-2 justify-center">
+                            <td class="px-6 py-4 flex gap-1 justify-center">
                                 <button type="button" data-modal-target="edit-modal-{{ $item->id }}"
                                     data-modal-toggle="edit-modal-{{ $item->id }}"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
