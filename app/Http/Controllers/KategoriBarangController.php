@@ -38,15 +38,15 @@ class KategoriBarangController extends Controller
     {
         // Validasi data yang diterima
         $validatedData = $request->validate([
-            'kode_kategori' => 'required|string|max:6',
-            'nama_kategori' => 'required|string|max:50',
+            'kode_kategori' => 'required|string|unique:kategori_barangs,kode_kategori|max:6',
+            'nama_kategori' => 'required|string|unique:kategori_barangs,nama_kategori|max:50',
         ]);
 
         // Simpan data ke database
         KategoriBarang::create($validatedData);
 
         // Redirect ke halaman yang diinginkan, misalnya index
-        return redirect('/kategori-barang')->with('success', 'Kategori barang berhasil ditambahkan!');
+        return redirect('kategori-barang')->with('success', 'Kategori barang berhasil ditambahkan!');
     }
 
     /**

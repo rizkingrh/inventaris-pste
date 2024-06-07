@@ -20,7 +20,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="/kategori-barang" method="POST" class="p-4 md:p-5">
+            <form action="{{ url('kategori-barang') }}" method="POST" class="p-4 md:p-5">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
@@ -29,7 +29,7 @@
                             Kategori</label>
                         <input type="text" name="kode_kategori" id="kode_kategori"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="KTG000" required="">
+                            placeholder="KTG000" required="" value="{{ old('kode_kategori') }}">
                     </div>
                     <div class="col-span-2">
                         <label for="nama_kategori"
@@ -37,7 +37,7 @@
                             Kategori</label>
                         <input type="text" name="nama_kategori" id="nama_kategori"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukan nama kategori" required="">
+                            placeholder="Masukan nama kategori" required="" value="{{ old('nama_kategori') }}">
                     </div>
 
                 </div>

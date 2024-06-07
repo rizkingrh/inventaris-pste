@@ -18,12 +18,12 @@ class KategoriBarangSeeder extends Seeder
             ['kode_kategori' => 'KTG001', 'nama_kategori' => 'Elektronik'],
             ['kode_kategori' => 'KTG002', 'nama_kategori' => 'Furnitur'],
             ['kode_kategori' => 'KTG003', 'nama_kategori' => 'Komponen'],
-            ['kode_kategori' => 'KTG004', 'nama_kategori' => 'Buku'],
-            ['kode_kategori' => 'KTG005', 'nama_kategori' => 'ATK'],
+            // ['kode_kategori' => 'KTG004', 'nama_kategori' => 'Buku'],
+            // ['kode_kategori' => 'KTG005', 'nama_kategori' => 'ATK'],
         ];
 
-        foreach ($kategoriBarangs as $kategoriBarang) {
-            KategoriBarang::create($kategoriBarang);
+        foreach ($kategoriBarangs as $item) {
+            KategoriBarang::create($item);
         }
     }
 }
