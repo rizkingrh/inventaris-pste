@@ -12,10 +12,19 @@ class KategoriBarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $kategoriBarangs = KategoriBarang::all();
-        return view('kategoriBarang', compact('kategoriBarangs'));
+        $searchKey = $request->searchKey;
+        if (strlen($searchKey)) {
+            $data = KategoriBarang::where('kode_kategori', 'like', '%'. $searchKey. '%')
+                ->orWhere('nama_kategori', 'like', '%'. $searchKey. '%')
+                ->get();
+        } else {
+            $data = KategoriBarang::all();
+        }
+        return view('kategoribarang.index', compact('data'));
+
+
     }
 
     /**
@@ -66,7 +75,7 @@ class KategoriBarangController extends Controller
      * @param  \App\Models\KategoriBarang  $kategoriBarang
      * @return \Illuminate\Http\Response
      */
-    public function edit(KategoriBarang $kategoriBarang)
+    public function edit($id)
     {
         //
     }
@@ -78,9 +87,18 @@ class KategoriBarangController extends Controller
      * @param  \App\Models\KategoriBarang  $kategoriBarang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KategoriBarang $kategoriBarang)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'nama_kategori' => 'required|string|unique:kategori_barangs,nama_kategori|max:50',
+        ]);
+
+        // Simpan data ke database
+        KategoriBarang::where('id', $id)->update($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('kategori-barang')->with('success', 'Kategori barang berhasil di edit!');
     }
 
     /**
@@ -91,7 +109,7 @@ class KategoriBarangController extends Controller
      */
     public function destroy($id)
     {
-        $kategori = KategoriBarang::findOrFail($id);
-        $kategori->delete();
+        KategoriBarang::where('id', $id)->delete();
+        return redirect('kategori-barang')->with('success', 'Kategori barang berhasil di hapus!');
     }
 }
