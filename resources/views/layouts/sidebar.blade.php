@@ -4,7 +4,8 @@
     <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
         <ul class="space-y-2 font-medium">
             <li>
-                <a href="/dashboard" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                <a href="/dashboard"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group {{ Request::is('dashboard') ? 'bg-gray-100' : '' }}">
                     <svg class="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
                         <path
@@ -34,19 +35,19 @@
                 <ul id="manage-user" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/user"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Daftar
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ Request::is('user') ? 'bg-gray-100' : '' }}">Daftar
                             User</a>
                     </li>
                     <li>
                         <a href="/level"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Level
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ Request::is('level') ? 'bg-gray-100' : '' }}">Level
                             User</a>
                     </li>
                 </ul>
-
             </li>
             <li>
-                <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                <a href="/supplier"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group {{ Request::is('supplier') ? 'bg-gray-100' : '' }}">
                     <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                         <path
@@ -74,12 +75,12 @@
                 <ul id="dropdown-barang" class="hidden py-2 space-y-2">
                     <li>
                         <a href="/barang"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Daftar
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ Request::is('barang') ? 'bg-gray-100' : '' }}">Daftar
                             Barang</a>
                     </li>
                     <li>
                         <a href="/kategori-barang"
-                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Kategori
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-12 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 {{ Request::is('kategori-barang') ? 'bg-gray-100' : '' }}">Kategori
                             Barang</a>
                     </li>
                 </ul>

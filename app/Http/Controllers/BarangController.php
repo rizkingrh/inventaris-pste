@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\KategoriBarang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -12,10 +13,27 @@ class BarangController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Barang::with('kategoribarang')->get();
-        return view('barang.index', compact('data'));
+        $searchKey = $request->searchKey;
+        if (strlen($searchKey)) {
+            $data = Barang::with('kategoribarang')
+                ->where('kode_barang', 'like', '%'. $searchKey. '%')
+                ->orWhere('nama_barang', 'like', '%'. $searchKey. '%')
+                ->orWhere('keterangan', 'like', '%'. $searchKey. '%')
+                ->orWhere('merk', 'like', '%'. $searchKey. '%')
+                ->orWhere('jumlah', 'like', '%'. $searchKey. '%')
+                ->orWhere('satuan', 'like', '%'. $searchKey. '%')
+                ->orWhereHas('kategoribarang', function($query) use ($searchKey) {
+                    $query->where('nama_kategori', 'like', '%' . $searchKey . '%');
+                })
+                ->get();
+            $kategoribarang = KategoriBarang::all();
+        } else {
+            $data = Barang::with('kategoribarang')->get();
+            $kategoribarang = KategoriBarang::all();
+        }
+        return view('barang.index', compact('data', 'kategoribarang'));
     }
 
     /**
@@ -40,8 +58,8 @@ class BarangController extends Controller
         $validatedData = $request->validate([
             'kode_barang' => 'required|string|unique:barangs,kode_barang|max:6',
             'nama_barang' => 'required|string|max:50',
-            'keterangan' => 'required|string',
-            'merk' => 'required|string|max:50',
+            'keterangan' => 'required',
+            'merk' => 'required|max:50',
             'jumlah' => 'required|integer',
             'satuan' => 'required|string|max:50',
             'kategori_id' => 'required|integer|max:50',

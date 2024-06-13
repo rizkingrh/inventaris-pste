@@ -66,7 +66,7 @@
             </svg>
             <span class="sr-only">Danger</span>
             <div>
-                <span class="font-medium">Ensure that these requirements are met:</span>
+                <span class="font-medium">Pastikan persyaratan berikut dipenuhi:</span>
                 <ul class="mt-1.5 list-disc list-inside">
                     @foreach ($errors->all() as $item)
                         <li>{{ $item }}</li>
@@ -90,25 +90,27 @@
 
         <div class="relative overflow-x-auto sm:rounded-lg p-2">
             <div class="text-left mb-4">
-                <p class="text-lg font-semibold">Manage Barang</p>
+                <p class="text-lg font-semibold">Barang</p>
                 <p class="text-sm ">Daftar barang yang terdapat pada Laboratorium Program Studi Teknik Elektro
                 </p>
             </div>
 
             <div class="pb-4 bg-white flex justify-between items-center">
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+                <form action="{{ url('barang') }}" id="searchForm" name="searchForm" method="get">
+                    <label for="search" class="sr-only">Search</label>
+                    <div class="relative mt-1">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="searchKey" name="searchKey"
+                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Pencarian item" value="{{ Request::get('searchKey') }}">
                     </div>
-                    <input type="text" id="table-search"
-                        class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Search for items">
-                </div>
+                </form>
                 <button type="button" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
                     class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
                     data-toggle="modal" data-target="#ModalCreate">

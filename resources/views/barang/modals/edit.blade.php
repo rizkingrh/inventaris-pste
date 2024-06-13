@@ -30,7 +30,7 @@
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode
                                 Barang</label>
                             <input type="text" name="kode_barang" id="kode_barang"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="BRG000" required="" value="{{ $item->kode_barang }}" disabled readonly>
                         </div>
                         <div>
@@ -40,13 +40,6 @@
                             <input type="text" name="nama_barang" id="nama_barang"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Masukan nama barang" required="" value="{{ $item->nama_barang }}">
-                        </div>
-                        <div>
-                            <label for="keterangan"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                            <input type="text" name="keterangan" id="keterangan"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="Masukan keterangan" required="" value="{{ $item->keterangan }}">
                         </div>
                         <div>
                             <label for="merk"
@@ -69,18 +62,25 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Masukan satuan" required="" value="{{ $item->satuan }}">
                         </div>
-                        <div class="sm:col-span-2">
+                        <div>
                             <label for="kategori_id"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
                             <select id="kategori_id" name="kategori_id"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="" value="{{ $item->kategoribarang->id }}">
+                                <option value="{{ $item->kategoribarang->id }}">
                                     {{ $item->kategoribarang->nama_kategori }}</option>
-                                @foreach ($data as $item)
-                                    <option value="{{ $item->kategoribarang->id }}">
-                                        {{ $item->kategoribarang->nama_kategori }}</option>
+                                @foreach ($kategoribarang as $kb)
+                                    <option value="{{ $kb->id }}">
+                                        {{ $kb->nama_kategori }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="sm:col-span-2">
+                            <label for="keterangan"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
+                            <textarea id="keterangan" name="keterangan" rows="2"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                placeholder="Masukan keterangan">{{ $item->keterangan }}</textarea>
                         </div>
                     </div>
                     <button type="submit"
