@@ -21,7 +21,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Daftar Barang</span>
+                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Level User</span>
                 </div>
             </li>
         </ol>
@@ -90,65 +90,47 @@
 
         <div class="relative overflow-x-auto sm:rounded-lg p-2">
             <div class="text-left mb-4">
-                <p class="text-lg font-semibold">Manage Barang</p>
-                <p class="text-sm ">Daftar barang yang terdapat pada Laboratorium Program Studi Teknik Elektro
+                <p class="text-lg font-semibold">Level User</p>
+                <p class="text-sm ">Daftar Level User yang terdapat pada Laboratorium Program Studi Teknik Elektro
                 </p>
             </div>
 
             <div class="pb-4 bg-white flex justify-between items-center">
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+                <form action="{{ url('kategori-barang') }}" id="searchForm" name="searchForm" method="get">
+                    <label for="search" class="sr-only">Search</label>
+                    <div class="relative mt-1">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="searchKey" name="searchKey"
+                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Search for items" value="{{ Request::get('searchKey') }}">
                     </div>
-                    <input type="text" id="table-search"
-                        class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                        placeholder="Search for items">
-                </div>
-                <button type="button" data-modal-target="crud-modal" data-modal-toggle="crud-modal"
-                    class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-                    data-toggle="modal" data-target="#ModalCreate">
-
+                </form>
+                <button type="button" data-modal-target="create-modal" data-modal-toggle="create-modal"
+                    class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                     <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                         fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M5 12h14m-7 7V5" />
                     </svg>
-                    Barang
+                    Level
                 </button>
             </div>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-4 py-3">
+                        <th scope="col" class="px-6 py-3">
                             No
                         </th>
-                        <th scope="col" class="px-4 py-3">
-                            Kode Barang
+                        <th scope="col" class="px-6 py-3">
+                            Nama Level
                         </th>
-                        <th scope="col" class="px-4 py-3">
-                            Nama Barang
-                        </th>
-                        <th scope="col" class="px-4 py-3">
-                            Keterangan
-                        </th>
-                        <th scope="col" class="px-4 py-3">
-                            Merk
-                        </th>
-                        <th scope="col" class="px-4 py-3">
-                            Jumlah
-                        </th>
-                        <th scope="col" class="px-4 py-3">
-                            Satuan
-                        </th>
-                        <th scope="col" class="px-4 py-3">
-                            Kategori
-                        </th>
-                        <th scope="col" class="px-4 py-3 text-center">
+                        <th scope="col" class="px-6 py-3 text-center">
                             Action
                         </th>
                     </tr>
@@ -157,31 +139,13 @@
                     @foreach ($data as $item)
                         <tr
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                            <td class="px-4 py-4"">
+                            <td class="px-6 py-4"">
                                 {{ $loop->iteration }}
                             </td>
-                            <td class="px-4 py-4">
-                                {{ $item->kode_barang }}
+                            <td class="px-6 py-4">
+                                {{ $item->nama_level }}
                             </td>
-                            <td class="px-4 py-4">
-                                {{ $item->nama_barang }}
-                            </td>
-                            <td class="px-4 py-4">
-                                {{ $item->keterangan }}
-                            </td>
-                            <td class="px-4 py-4">
-                                {{ $item->merk }}
-                            </td>
-                            <td class="px-4 py-4">
-                                {{ $item->jumlah }}
-                            </td>
-                            <td class="px-4 py-4">
-                                {{ $item->satuan }}
-                            </td>
-                            <td class="px-4 py-4">
-                                {{ $item->kategoribarang->nama_kategori }}
-                            </td>
-                            <td class="px-6 py-4 flex justify-center gap-1">
+                            <td class="px-6 py-4 flex gap-1 justify-center">
                                 <button type="button" data-modal-target="edit-modal-{{ $item->id }}"
                                     data-modal-toggle="edit-modal-{{ $item->id }}"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -211,7 +175,7 @@
             </table>
         </div>
     </div>
-    @include('barang.modals.edit')
-    @include('barang.modals.delete')
-    @include('barang.modals.create')
+    @include('level.modals.delete')
+    @include('level.modals.edit')
+    @include('level.modals.create')
 @endsection

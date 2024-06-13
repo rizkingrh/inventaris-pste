@@ -25,7 +25,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        // 
     }
 
     /**
@@ -36,7 +36,22 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'kode_barang' => 'required|string|unique:barangs,kode_barang|max:6',
+            'nama_barang' => 'required|string|max:50',
+            'keterangan' => 'required|string',
+            'merk' => 'required|string|max:50',
+            'jumlah' => 'required|integer',
+            'satuan' => 'required|string|max:50',
+            'kategori_id' => 'required|integer|max:50',
+        ]);
+
+        // Simpan data ke database
+        Barang::create($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('barang')->with('success', 'Barang berhasil ditambahkan!');
     }
 
     /**
@@ -68,9 +83,23 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, $id)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'nama_barang' => 'required|string|max:50',
+            'keterangan' => 'required|string',
+            'merk' => 'required|string|max:50',
+            'jumlah' => 'required|integer',
+            'satuan' => 'required|string|max:50',
+            'kategori_id' => 'required|integer|max:50',
+        ]);
+
+        // Simpan data ke database
+        Barang::where('id', $id)->update($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('barang')->with('success', 'Barang berhasil di edit!');
     }
 
     /**
@@ -79,8 +108,9 @@ class BarangController extends Controller
      * @param  \App\Models\Barang  $barang
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Barang $barang)
+    public function destroy($id)
     {
-        //
+        Barang::where('id', $id)->delete();
+        return redirect('barang')->with('success', 'Barang berhasil di hapus!');
     }
 }
