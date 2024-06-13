@@ -29,22 +29,16 @@
                                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user photo">
                         </button>
                     </div>
-                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
+                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow w-[12rem]"
                         id="dropdown-user">
                         <div class="px-4 py-3" role="none">
                             <p class="text-sm text-gray-900" role="none">
                                 {{ auth()->user()->name }}
                             </p>
                             <p class="text-sm font-medium text-gray-900 truncate" role="none">
-                                Laborannnnnnnnnnnn
+                                {{ auth()->user()->level->nama_level }}
                             </p>
                         </div>
-                        <ul class="py-1" role="none">
-                            <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                    role="menuitem">My Profile</a>
-                            </li>
-                        </ul>
                         <div class="px-4 py-3" role="none">
                             <form action="/logout" method="POST" class="">
                                 @csrf

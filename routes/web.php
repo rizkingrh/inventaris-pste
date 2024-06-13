@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\RuanganLabController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -39,3 +40,4 @@ Route::resource('kategori-barang', KategoriBarangController::class)->middleware(
 Route::resource('level', LevelController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('supplier', SupplierController::class)->middleware('auth');
+Route::resource('ruangan-lab', RuanganLabController::class)->middleware('auth');
