@@ -6,7 +6,7 @@
             <!-- Modal header -->
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Tambah Barang
+                    Tambah User
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -20,64 +20,49 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="{{ url('barang') }}" method="POST">
+            <form action="{{ url('user') }}" method="POST">
                 @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="kode_barang"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode
-                            Barang</label>
-                        <input type="text" name="kode_barang" id="kode_barang"
+                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                            Lengkap</label>
+                        <input type="text" name="name" id="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="BRG000" required="" value="{{ old('kode_barang') }}">
+                            placeholder="Masukan nama lengkap" required="" value="{{ old('name') }}">
                     </div>
                     <div>
-                        <label for="nama_barang"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
-                            Barang</label>
-                        <input type="text" name="nama_barang" id="nama_barang"
+                        <label for="phone_number"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                            Telepon</label>
+                        <input type="text" name="phone_number" id="phone_number"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukan nama barang" required="" value="{{ old('nama_barang') }}">
-                    </div>
-                    <div>
-                        <label for="merk"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Merk</label>
-                        <input type="text" name="merk" id="merk"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukan merk barang" required="" value="{{ old('merk') }}">
-                    </div>
-                    <div>
-                        <label for="jumlah"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
-                        <input type="number" name="jumlah" id="jumlah"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="1" required="" value="{{ old('jumlah') }}">
-                    </div>
-                    <div>
-                        <label for="satuan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Satuan</label>
-                        <input type="text" name="satuan" id="satuan"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukan satuan" required="" value="{{ old('satuan') }}">
-                    </div>
-                    <div>
-                        <label for="kategori_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
-                        <select id="kategori_id" name="kategori_id"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Pilih kategori</option>
-                            @foreach ($kategoribarang as $item)
-                                <option value="{{ $item->id }}">
-                                    {{ $item->nama_kategori }}</option>
-                            @endforeach
-                        </select>
+                            placeholder="Masukan nomor telepon" required="" value="{{ old('phone_number') }}">
                     </div>
                     <div class="sm:col-span-2">
-                        <label for="keterangan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Keterangan</label>
-                        <textarea id="keterangan" name="keterangan" rows="2"
-                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukan keterangan">{{ old('keterangan') }}</textarea>
+                        <label for="username"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                        <input type="text" name="username" id="username"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Masukan username" required="" value="{{ old('username') }}">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="password"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                        <input type="password" name="password" id="password"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="*****" required="" value="{{ old('password') }}">
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="level_id"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Level</label>
+                        <select id="level_id" name="level_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected="">Pilih kategori</option>
+                            @foreach ($level as $item)
+                                <option value="{{ $item->id }}">
+                                    {{ $item->nama_level }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <button type="submit"

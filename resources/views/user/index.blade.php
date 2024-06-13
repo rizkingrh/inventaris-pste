@@ -21,7 +21,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">User</span>
+                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Daftar User</span>
                 </div>
             </li>
         </ol>
@@ -66,7 +66,7 @@
             </svg>
             <span class="sr-only">Danger</span>
             <div>
-                <span class="font-medium">Ensure that these requirements are met:</span>
+                <span class="font-medium">Pastikan persyaratan berikut dipenuhi:</span>
                 <ul class="mt-1.5 list-disc list-inside">
                     @foreach ($errors->all() as $item)
                         <li>{{ $item }}</li>
@@ -91,12 +91,12 @@
         <div class="relative overflow-x-auto sm:rounded-lg p-2">
             <div class="text-left mb-4">
                 <p class="text-lg font-semibold">User</p>
-                <p class="text-sm ">Daftar User yang terdapat pada Laboratorium Program Studi Teknik Elektro
+                <p class="text-sm ">Daftar user yang terdaftar pada Laboratorium Program Studi Teknik Elektro
                 </p>
             </div>
 
             <div class="pb-4 bg-white flex justify-between items-center">
-                <form action="{{ url('kategori-barang') }}" id="searchForm" name="searchForm" method="get">
+                <form action="{{ url('user') }}" id="searchForm" name="searchForm" method="get">
                     <label for="search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -108,7 +108,7 @@
                         </div>
                         <input type="text" id="searchKey" name="searchKey"
                             class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Search for items" value="{{ Request::get('searchKey') }}">
+                            placeholder="Pencarian item" value="{{ Request::get('searchKey') }}">
                     </div>
                 </form>
                 <button type="button" data-modal-target="create-modal" data-modal-toggle="create-modal"
@@ -118,7 +118,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M5 12h14m-7 7V5" />
                     </svg>
-                    Level
+                    User
                 </button>
             </div>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -131,13 +131,16 @@
                             Nama User
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Nomer Telvon
+                            Nomor Telepon
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Username
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Level Id
+                            Password
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Level
                         </th>
                         <th scope="col" class="px-6 py-3 text-center">
                             Action
@@ -159,6 +162,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->username }}
+                            </td>
+                            <td class="px-6 py-4">
+                                *****
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->level->nama_level }}
@@ -193,7 +199,7 @@
             </table>
         </div>
     </div>
-    @include('level.modals.delete')
-    @include('level.modals.edit')
-    @include('level.modals.create')
+    @include('user.modals.delete')
+    @include('user.modals.edit')
+    @include('user.modals.create')
 @endsection
