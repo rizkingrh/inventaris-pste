@@ -66,7 +66,7 @@
             </svg>
             <span class="sr-only">Danger</span>
             <div>
-                <span class="font-medium">Ensure that these requirements are met:</span>
+                <span class="font-medium">Pastikan persyaratan berikut dipenuhi:</span>
                 <ul class="mt-1.5 list-disc list-inside">
                     @foreach ($errors->all() as $item)
                         <li>{{ $item }}</li>
@@ -91,12 +91,12 @@
         <div class="relative overflow-x-auto sm:rounded-lg p-2">
             <div class="text-left mb-4">
                 <p class="text-lg font-semibold">Level User</p>
-                <p class="text-sm ">Daftar Level User yang terdapat pada Laboratorium Program Studi Teknik Elektro
+                <p class="text-sm ">Daftar level yang tersedia untuk user pada Laboratorium Program Studi Teknik Elektro
                 </p>
             </div>
 
             <div class="pb-4 bg-white flex justify-between items-center">
-                <form action="{{ url('kategori-barang') }}" id="searchForm" name="searchForm" method="get">
+                <form action="{{ url('level') }}" id="searchForm" name="searchForm" method="get">
                     <label for="search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -108,7 +108,7 @@
                         </div>
                         <input type="text" id="searchKey" name="searchKey"
                             class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Search for items" value="{{ Request::get('searchKey') }}">
+                            placeholder="Pencarian item" value="{{ Request::get('searchKey') }}">
                     </div>
                 </form>
                 <button type="button" data-modal-target="create-modal" data-modal-toggle="create-modal"

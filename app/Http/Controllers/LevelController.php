@@ -12,9 +12,14 @@ class LevelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Level::all();
+        $searchKey = $request->searchKey;
+        if (strlen($searchKey)) {
+            $data = Level::where('nama_level', 'like', '%'. $searchKey. '%')->get();
+        } else {
+            $data = Level::all();
+        }
         return view('level.index', compact('data'));
     }
 
@@ -80,7 +85,7 @@ class LevelController extends Controller
     public function update(Request $request, $id)
     {
          // Validasi data yang diterima
-         $validatedData = $request->validate([
+        $validatedData = $request->validate([
             'nama_level' => 'required|string|unique:levels,nama_level|max:50',
         ]);
 
