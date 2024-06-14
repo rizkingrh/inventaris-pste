@@ -110,7 +110,7 @@ class BarangController extends Controller
             'merk' => 'required|string|max:50',
             'jumlah' => 'required|integer',
             'satuan' => 'required|string|max:50',
-            'kategori_id' => 'required|integer|max:50',
+            'kategori_id' => 'integer|max:50',
         ]);
 
         // Simpan data ke database

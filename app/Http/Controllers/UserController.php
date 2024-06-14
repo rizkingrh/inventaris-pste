@@ -58,7 +58,7 @@ class UserController extends Controller
             'phone_number' => 'required|string|max:25',
             'username' => 'required|string|unique:users,username|max:50',
             'password' => 'required|string',
-            'level_id' => 'required|string',
+            'level_id' => '',
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);

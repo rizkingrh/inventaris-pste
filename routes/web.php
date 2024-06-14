@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangInventarisController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\RuanganLabController;
@@ -41,3 +42,4 @@ Route::resource('level', LevelController::class)->middleware('auth');
 Route::resource('user', UserController::class)->middleware('auth');
 Route::resource('supplier', SupplierController::class)->middleware('auth');
 Route::resource('ruangan-lab', RuanganLabController::class)->middleware('auth');
+Route::resource('barang-inventaris', BarangInventarisController::class)->middleware('auth');

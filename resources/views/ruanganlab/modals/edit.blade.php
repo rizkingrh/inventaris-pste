@@ -47,7 +47,8 @@
                                 Gedung</label>
                             <select id="lokasi_gedung" name="lokasi_gedung"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected disabled hidden>{{ $item->lokasi_gedung }}</option>
+                                <option selected disabled hidden>{{ $item->lokasi_gedung }}
+                                </option>
                                 @foreach ($lokasi as $key => $value)
                                     <option value="{{ $key }}">
                                         {{ $value }}</option>

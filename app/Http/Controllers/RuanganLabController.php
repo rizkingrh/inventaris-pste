@@ -96,7 +96,7 @@ class RuanganLabController extends Controller
         // Validasi data yang diterima
         $validatedData = $request->validate([
             'nama_ruangan' => 'required',
-            'lokasi_gedung' => 'required',
+            'lokasi_gedung' => '',
             'keterangan' => 'required',
         ]);
 
