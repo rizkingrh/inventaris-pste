@@ -18,7 +18,7 @@ class BarangInventarisController extends Controller
     {
         $searchKey = $request->searchKey;
         if (strlen($searchKey)) {
-            $data = BarangInventaris::with('barang')
+            $data = BarangInventaris::with('barang.kategoribarang')
                 ->where('kode_inventaris', 'like', '%'. $searchKey. '%')
                 ->orWhere('tanggal_masuk', 'like', '%'. $searchKey. '%')
                 ->orWhere('status_barang', 'like', '%'. $searchKey. '%')
@@ -33,7 +33,7 @@ class BarangInventarisController extends Controller
             $barangTerdata = BarangInventaris::pluck('barang_id');
             $barang = Barang::whereNotIn('id', $barangTerdata)->get();
         } else {
-            $data = BarangInventaris::with('barang')->get();
+            $data = BarangInventaris::with('barang.kategoribarang')->get();
             $status = BarangInventaris::getStatus();
 
             // Ambil barang yang belum terdaftar di barang_inventaris

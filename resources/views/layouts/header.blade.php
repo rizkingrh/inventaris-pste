@@ -14,7 +14,7 @@
                     </svg>
                 </button>
                 <a href="/dashboard" class="flex ms-2 md:me-24">
-                    <img src="img/logo.png" class="h-10 me-3" alt="logo" />
+                    <img src="{{ asset('img/logo.png') }}" class="h-10 me-3" alt="logo" />
                     <span class="self-center text-xl font-bold sm:text-2xl whitespace-nowrap">SIIL PSTE</span>
                 </a>
             </div>
