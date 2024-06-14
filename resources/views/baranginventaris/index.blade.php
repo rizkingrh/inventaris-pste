@@ -95,7 +95,7 @@
                 </p>
             </div>
             <div class="pb-4 bg-white flex justify-between items-center">
-                <form action="{{ url('ruangan-lab') }}" id="searchForm" name="searchForm" method="get">
+                <form action="{{ url('barang-inventaris') }}" id="searchForm" name="searchForm" method="get">
                     <label for="search" class="sr-only">Search</label>
                     <div class="relative mt-1">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -138,6 +138,9 @@
                         <th scope="col" class="px-6 py-3">
                             Kode Barang
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            Nama Barang
+                        </th>
                         <th scope="col" class="px-6 py-3 text-center">
                             Action
                         </th>
@@ -161,6 +164,9 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->barang->kode_barang }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ $item->barang->nama_barang }}
                             </td>
                             <td class="px-6 py-4 flex gap-1 justify-center">
                                 <button type="button" data-modal-target="show-modal-{{ $item->id }}"

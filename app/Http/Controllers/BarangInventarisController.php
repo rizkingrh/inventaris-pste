@@ -14,15 +14,32 @@ class BarangInventarisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = BarangInventaris::with('barang')->get();
-        $status = BarangInventaris::getStatus();
+        $searchKey = $request->searchKey;
+        if (strlen($searchKey)) {
+            $data = BarangInventaris::with('barang')
+                ->where('kode_inventaris', 'like', '%'. $searchKey. '%')
+                ->orWhere('tanggal_masuk', 'like', '%'. $searchKey. '%')
+                ->orWhere('status_barang', 'like', '%'. $searchKey. '%')
+                ->orWhereHas('barang', function($query) use ($searchKey) {
+                    $query->where('nama_barang', 'like', '%' . $searchKey . '%')
+                        ->orWhere('kode_barang', 'like', '%' . $searchKey . '%');
+                })
+                ->get();
+            $status = BarangInventaris::getStatus();
 
-        // Ambil barang yang belum terdaftar di barang_inventaris
-        $barangTerdata = BarangInventaris::pluck('barang_id');
-        $barang = Barang::whereNotIn('id', $barangTerdata)->get();
+            // Ambil barang yang belum terdaftar di barang_inventaris
+            $barangTerdata = BarangInventaris::pluck('barang_id');
+            $barang = Barang::whereNotIn('id', $barangTerdata)->get();
+        } else {
+            $data = BarangInventaris::with('barang')->get();
+            $status = BarangInventaris::getStatus();
 
+            // Ambil barang yang belum terdaftar di barang_inventaris
+            $barangTerdata = BarangInventaris::pluck('barang_id');
+            $barang = Barang::whereNotIn('id', $barangTerdata)->get();
+        }
         return view('baranginventaris.index', compact('data', 'status', 'barang'));
     }
 
