@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengadaan;
+use App\Models\PengadaanItem;
 use App\Models\Supplier;
 use App\Models\User;
 use Carbon\Carbon;
@@ -75,7 +76,9 @@ class PengadaanController extends Controller
      */
     public function show($id)
     {
-        return view('pengadaan.show');
+        $data = Pengadaan::where('id', $id)->with('supplier')->first();
+        $barang = PengadaanItem::where('pengadaan_id', $id)->get();
+        return view('pengadaan.show', compact('data', 'barang'));
     }
 
     /**
