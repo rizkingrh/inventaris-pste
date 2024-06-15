@@ -7,6 +7,7 @@ use App\Http\Controllers\BarangInventarisController;
 use App\Http\Controllers\KategoriBarangController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\PenempatanController;
+use App\Http\Controllers\PenempatanItemController;
 use App\Http\Controllers\PengadaanController;
 use App\Http\Controllers\PengadaanItemController;
 use App\Http\Controllers\RuanganLabController;
@@ -49,3 +50,4 @@ Route::resource('barang-inventaris', BarangInventarisController::class)->middlew
 Route::resource('pengadaan', PengadaanController::class)->middleware('auth');
 Route::resource('pengadaan-item', PengadaanItemController::class)->middleware('auth');
 Route::resource('penempatan', PenempatanController::class)->middleware('auth');
+Route::resource('penempatan-item', PenempatanItemController::class)->middleware('auth');

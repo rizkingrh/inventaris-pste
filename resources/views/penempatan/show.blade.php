@@ -14,6 +14,17 @@
                     Dashboard
                 </a>
             </li>
+            <li>
+                <div class="flex items-center">
+                    <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 9 4-4-4-4" />
+                    </svg>
+                    <a href="/penempatan"
+                        class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Penempatan</a>
+                </div>
+            </li>
             <li aria-current="page">
                 <div class="flex items-center">
                     <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
@@ -21,7 +32,9 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="m1 9 4-4-4-4" />
                     </svg>
-                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Penempatan</span>
+                    <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">
+                        {{ $data->nomor_penempatan }}
+                    </span>
                 </div>
             </li>
         </ol>
@@ -90,26 +103,27 @@
 
         <div class="relative overflow-x-auto sm:rounded-lg p-2">
             <div class="text-left mb-4">
-                <p class="text-lg font-semibold">Penempatan</p>
-                <p class="text-sm ">Daftar penempatan barang pada Laboratorium Program Studi Teknik Elektro
+                <p class="text-lg font-semibold">Detail Penempatan</p>
+                <p class="text-sm ">Penempatan barang inventaris pada Laboratorium Program Studi Teknik Elektro
                 </p>
             </div>
-            <div class="pb-4 bg-white flex justify-between items-center">
-                <form action="{{ url('pengadaan') }}" id="searchForm" name="searchForm" method="get">
-                    <label for="search" class="sr-only">Search</label>
-                    <div class="relative mt-1">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input type="text" id="searchKey" name="searchKey"
-                            class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                            placeholder="Pencarian item" value="{{ Request::get('searchKey') }}">
-                    </div>
-                </form>
+            <div class="grid gap-4 mb-8 sm:grid-cols-2">
+                <div>
+                    <label for="nomor_penempatan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                        Penempatan</label>
+                    <input type="text" name="nomor_penempatan" id="nomor_penempatan"
+                        class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        value="{{ $data->nomor_penempatan }}" disabled readonly>
+                </div>
+                <div>
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
+                        Petugas/User</label>
+                    <input type="text" name="name" id="name"
+                        class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="PGN000" required="" value="{{ $data->user->name }}" disabled readonly>
+                </div>
+            </div>
+            <div class="pb-6 bg-white flex justify-end items-center">
                 <button type="button" data-modal-target="create-modal" data-modal-toggle="create-modal"
                     class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                     <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +131,7 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M5 12h14m-7 7V5" />
                     </svg>
-                    Penempatan
+                    Barang Inventaris
                 </button>
             </div>
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -130,16 +144,10 @@
                             Nomor
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Tanggal
+                            Barang Inventaris
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Keterangan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Ruangan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Petugas/User
+                            Status
                         </th>
                         <th scope="col" class="px-6 py-3 text-center">
                             Action
@@ -147,53 +155,34 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($penempatanItem as $item)
                         <tr
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <td class="px-6 py-4"">
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->nomor_penempatan }}
+                                {{ $item->penempatan->nomor_penempatan }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->tanggal_penempatan }}
+                                {{ $item->inventaris->kode_inventaris }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->keterangan }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $item->ruangan->kode_ruangan }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ $item->user->name }}
+                                {{ $item->status }}
                             </td>
                             <td class="px-6 py-4 flex gap-1 justify-center">
-                                <a href="{{ route('penempatan.show', $item->id) }}">
-                                    <button type="button" data-modal-target="show-modal-{{ $item->id }}"
-                                        data-modal-toggle="show-modal-{{ $item->id }}"
-                                        class="text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-width="2"
-                                                d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
-                                            <path stroke="currentColor" stroke-width="2"
-                                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                        </svg>
-
-                                        <span class="sr-only">Show</span>
-                                    </button>
-                                </a>
-                                <button type="button" data-modal-target="edit-modal-{{ $item->id }}"
-                                    data-modal-toggle="edit-modal-{{ $item->id }}"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                <button type="button" data-modal-target="show-modal-{{ $item->id }}"
+                                    data-modal-toggle="show-modal-{{ $item->id }}"
+                                    class="text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
+                                        <path stroke="currentColor" stroke-width="2"
+                                            d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                                        <path stroke="currentColor" stroke-width="2"
+                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
-                                    <span class="sr-only">Edit</span>
+
+                                    <span class="sr-only">Show</span>
                                 </button>
                                 <button type="button" data-modal-target="delete-modal-{{ $item->id }}"
                                     data-modal-toggle="delete-modal-{{ $item->id }}"
@@ -213,7 +202,7 @@
             </table>
         </div>
     </div>
-    @include('penempatan.modals.delete')
-    @include('penempatan.modals.edit')
-    @include('penempatan.modals.create')
+    @include('penempatan.penempatanItem.delete')
+    @include('penempatan.penempatanItem.create')
+    @include('penempatan.penempatanItem.show')
 @endsection

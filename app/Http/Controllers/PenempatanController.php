@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BarangInventaris;
 use App\Models\Penempatan;
+use App\Models\PenempatanItem;
 use App\Models\RuanganLab;
 use App\Models\User;
 use Carbon\Carbon;
@@ -74,7 +76,12 @@ class PenempatanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Penempatan::where('id', $id)->with('user')->first();
+        $penempatanItem = PenempatanItem::where('penempatan_id', $id)->with('inventaris.barang', 'penempatan')->get();
+        $inventaris = BarangInventaris::all();
+        $status = PenempatanItem::getStatus();
+
+        return view('penempatan.show', compact('data', 'penempatanItem', 'inventaris', 'status'));
     }
 
     /**
