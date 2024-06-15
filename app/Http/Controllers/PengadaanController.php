@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use App\Models\Pengadaan;
 use App\Models\PengadaanItem;
 use App\Models\Supplier;
@@ -16,11 +17,29 @@ class PengadaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Pengadaan::with('supplier', 'user')->get();
-        $supplier = Supplier::all();
-        $user = User::all();
+        $searchKey = $request->searchKey;
+        if (strlen($searchKey)) {
+            $data = Pengadaan::with('supplier', 'user')
+                ->where('nomer_pengadaan', 'like', '%'. $searchKey. '%')
+                ->orWhere('tanggal_pengadaan', 'like', '%'. $searchKey. '%')
+                ->orWhere('jenis_pengadaan', 'like', '%'. $searchKey. '%')
+                ->orWhere('keterangan', 'like', '%'. $searchKey. '%')
+                ->orWhereHas('supplier', function($query) use ($searchKey) {
+                    $query->where('kode_supplier', 'like', '%' . $searchKey . '%');
+                })
+                ->orWhereHas('user', function($query) use ($searchKey) {
+                    $query->where('name', 'like', '%' . $searchKey . '%');
+                })
+                ->get();
+            $supplier = Supplier::all();
+            $user = User::all();
+        } else {
+            $data = Pengadaan::with('supplier', 'user')->get();
+            $supplier = Supplier::all();
+            $user = User::all();
+        }
         return view('pengadaan.index', compact('data', 'supplier', 'user'));
     }
 
@@ -77,8 +96,14 @@ class PengadaanController extends Controller
     public function show($id)
     {
         $data = Pengadaan::where('id', $id)->with('supplier')->first();
-        $barang = PengadaanItem::where('pengadaan_id', $id)->get();
-        return view('pengadaan.show', compact('data', 'barang'));
+        $pengadaanItem = PengadaanItem::where('pengadaan_id', $id)->with('barang')->get();
+        $barang = Barang::all();
+
+        // Format harga
+        foreach ($pengadaanItem as $item) {
+            $item->formatPrice = 'Rp. ' . number_format($item->harga_beli, 0, ',', '.');
+        }
+        return view('pengadaan.show', compact('data', 'pengadaanItem', 'barang'));
     }
 
     /**

@@ -177,14 +177,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($barang as $item)
+                    @foreach ($pengadaanItem as $item)
                         <tr
                             class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                             <td class="px-6 py-4"">
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->harga_beli }}
+                                {{ $item->formatPrice }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->jumlah }}
@@ -193,27 +193,25 @@
                                 {{ $item->keterangan }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->pengadaan_id }}
+                                {{ $item->pengadaan->nomer_pengadaan }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->barang_id }}
+                                {{ $item->barang->kode_barang }}
                             </td>
                             <td class="px-6 py-4 flex gap-1 justify-center">
-                                <a href="{{ route('pengadaan.show', $item->id) }}">
-                                    <button type="button" data-modal-target="show-modal-{{ $item->id }}"
-                                        data-modal-toggle="show-modal-{{ $item->id }}"
-                                        class="text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
-                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                            <path stroke="currentColor" stroke-width="2"
-                                                d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
-                                            <path stroke="currentColor" stroke-width="2"
-                                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                                        </svg>
+                                <button type="button" data-modal-target="show-modal-{{ $item->id }}"
+                                    data-modal-toggle="show-modal-{{ $item->id }}"
+                                    class="text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-width="2"
+                                            d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6Z" />
+                                        <path stroke="currentColor" stroke-width="2"
+                                            d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    </svg>
 
-                                        <span class="sr-only">Show</span>
-                                    </button>
-                                </a>
+                                    <span class="sr-only">Show</span>
+                                </button>
                                 <button type="button" data-modal-target="edit-modal-{{ $item->id }}"
                                     data-modal-toggle="edit-modal-{{ $item->id }}"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -243,7 +241,8 @@
             </table>
         </div>
     </div>
-    {{-- @include('pengadaan.modals.delete')
-    @include('pengadaan.modals.edit')
-    @include('pengadaan.modals.create') --}}
+    @include('pengadaan.pengadaanItem.delete')
+    @include('pengadaan.pengadaanItem.edit')
+    @include('pengadaan.pengadaanItem.create')
+    @include('pengadaan.pengadaanItem.show')
 @endsection

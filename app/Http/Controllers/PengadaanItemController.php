@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PengadaanItem;
 use Illuminate\Http\Request;
 
 class PengadaanItemController extends Controller
@@ -13,7 +14,7 @@ class PengadaanItemController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +35,20 @@ class PengadaanItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'harga_beli' => 'required|integer',
+            'jumlah' => 'required',
+            'keterangan' => 'required',
+            'pengadaan_id' => '',
+            'barang_id' => 'required',
+        ]);
+
+        // Simpan data ke database
+        PengadaanItem::create($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('pengadaan/'. $validatedData['pengadaan_id'] )->with('success', 'Item pengadaan berhasil ditambahkan!');
     }
 
     /**
@@ -68,7 +82,20 @@ class PengadaanItemController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'harga_beli' => 'required|integer|max:9999999999',
+            'jumlah' => 'required',
+            'keterangan' => 'required',
+            'pengadaan_id' => '',
+            'barang_id' => 'required',
+        ]);
+
+        // Simpan data ke database
+        PengadaanItem::where('id', $id)->update($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('pengadaan/'. $validatedData['pengadaan_id'] )->with('success', 'Item pengadaan berhasil di edit!');
     }
 
     /**
@@ -77,8 +104,10 @@ class PengadaanItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        PengadaanItem::where('id', $id)->delete();
+        $pengadaan_id = $request->input('pengadaan_id');
+        return redirect('pengadaan/'.$pengadaan_id)->with('success', 'Item pengadaan berhasil di hapus!');
     }
 }
