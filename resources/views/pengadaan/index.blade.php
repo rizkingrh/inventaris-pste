@@ -157,7 +157,7 @@
                                 {{ $loop->iteration }}
                             </td>
                             <td class="px-6 py-4">
-                                {{ $item->nomer_pengadaan }}
+                                {{ $item->nomor_pengadaan }}
                             </td>
                             <td class="px-6 py-4">
                                 {{ $item->tanggal_pengadaan }}

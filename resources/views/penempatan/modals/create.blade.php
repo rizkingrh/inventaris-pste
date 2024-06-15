@@ -6,7 +6,7 @@
             <!-- Modal header -->
             <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Tambah Pengadaan
+                    Tambah Penempatan
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -48,7 +48,7 @@
                                 placeholder="Pilih tanggal">
                         </div>
                     </div>
-                    <div>
+                    {{-- <div>
                         <label for="supplier_id"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Supplier</label>
                         <select id="supplier_id" name="supplier_id"
@@ -71,7 +71,7 @@
                                     {{ $us->name }}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="sm:col-span-2">
                         <label for="jenis_pengadaan"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Pengadaan</label>

@@ -22,7 +22,7 @@ class PengadaanController extends Controller
         $searchKey = $request->searchKey;
         if (strlen($searchKey)) {
             $data = Pengadaan::with('supplier', 'user')
-                ->where('nomer_pengadaan', 'like', '%'. $searchKey. '%')
+                ->where('nomor_pengadaan', 'like', '%'. $searchKey. '%')
                 ->orWhere('tanggal_pengadaan', 'like', '%'. $searchKey. '%')
                 ->orWhere('jenis_pengadaan', 'like', '%'. $searchKey. '%')
                 ->orWhere('keterangan', 'like', '%'. $searchKey. '%')
@@ -63,7 +63,7 @@ class PengadaanController extends Controller
     {
         // Validasi data yang diterima
         $validatedData = $request->validate([
-            'nomer_pengadaan' => 'required|string|unique:pengadaans,nomer_pengadaan|max:6',
+            'nomor_pengadaan' => 'required|string|unique:pengadaans,nomor_pengadaan|max:6',
             'tanggal_pengadaan' => 'required',
             'jenis_pengadaan' => 'required',
             'keterangan' => 'required',
