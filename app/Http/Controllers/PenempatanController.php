@@ -17,11 +17,28 @@ class PenempatanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Penempatan::with('user', 'ruangan')->get();
-        $ruangan = RuanganLab::all();
-        $user = User::all();
+        $searchKey = $request->searchKey;
+        if (strlen($searchKey)) {
+            $data = Penempatan::with('user', 'ruangan')
+                ->where('nomor_penempatan', 'like', '%'. $searchKey. '%')
+                ->orWhere('tanggal_penempatan', 'like', '%'. $searchKey. '%')
+                ->orWhere('keterangan', 'like', '%'. $searchKey. '%')
+                ->orWhereHas('ruangan', function($query) use ($searchKey) {
+                    $query->where('kode_ruangan', 'like', '%' . $searchKey . '%');
+                })
+                ->orWhereHas('user', function($query) use ($searchKey) {
+                    $query->where('name', 'like', '%' . $searchKey . '%');
+                })
+                ->get();
+            $ruangan = RuanganLab::all();
+            $user = User::all();
+        } else {
+            $data = Penempatan::with('user', 'ruangan')->get();
+            $ruangan = RuanganLab::all();
+            $user = User::all();
+        }
         return view('penempatan.index', compact('data', 'ruangan', 'user'));
     }
 
