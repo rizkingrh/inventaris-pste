@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Penempatan extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $guarded = ['id'];
 
     public function ruangan(){
         return $this->belongsTo(RuanganLab::class, 'ruangan_id', 'id');

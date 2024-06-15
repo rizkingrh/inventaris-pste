@@ -213,7 +213,7 @@
             </table>
         </div>
     </div>
-    {{-- @include('pengadaan.modals.delete')
-    @include('pengadaan.modals.edit') --}}
+    @include('penempatan.modals.delete')
+    @include('penempatan.modals.edit')
     @include('penempatan.modals.create')
 @endsection

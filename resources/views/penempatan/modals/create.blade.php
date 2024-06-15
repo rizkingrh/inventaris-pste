@@ -20,20 +20,21 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="{{ url('pengadaan') }}" method="POST">
+            <form action="{{ url('penempatan') }}" method="POST">
                 @csrf
                 <div class="grid gap-4 mb-4 sm:grid-cols-2">
                     <div>
-                        <label for="nomor_pengadaan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Pengadaan</label>
-                        <input type="text" name="nomor_pengadaan" id="nomor_pengadaan"
+                        <label for="nomor_penempatan"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                            Penempatan</label>
+                        <input type="text" name="nomor_penempatan" id="nomor_penempatan"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="PGN000" required="" value="{{ old('nomor_pengadaan') }}">
+                            placeholder="PNT000" required="" value="{{ old('nomor_penempatan') }}">
                     </div>
                     <div>
-                        <label for="tanggal_pengadaan"
+                        <label for="tanggal_penempatan"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal
-                            Pengadaan</label>
+                            Penempatan</label>
                         <div class="relative max-w-sm">
                             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -43,20 +44,20 @@
                                 </svg>
                             </div>
                             <input datepicker datepicker-buttons datepicker-autoselect-today type="text"
-                                name="tanggal_pengadaan" id="tanggal_pengadaan"
+                                name="tanggal_penempatan" id="tanggal_penempatan"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Pilih tanggal">
                         </div>
                     </div>
-                    {{-- <div>
-                        <label for="supplier_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Supplier</label>
-                        <select id="supplier_id" name="supplier_id"
+                    <div>
+                        <label for="ruangan_id"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ruangan</label>
+                        <select id="ruangan_id" name="ruangan_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected disabled hidden>Pilih supplier</option>
-                            @foreach ($supplier as $sp)
-                                <option value="{{ $sp->id }}">
-                                    {{ $sp->kode_supplier }}</option>
+                            <option selected disabled hidden>Pilih ruangan</option>
+                            @foreach ($ruangan as $rg)
+                                <option value="{{ $rg->id }}">
+                                    {{ $rg->kode_ruangan }} - {{ $rg->nama_ruangan }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -71,13 +72,6 @@
                                     {{ $us->name }}</option>
                             @endforeach
                         </select>
-                    </div> --}}
-                    <div class="sm:col-span-2">
-                        <label for="jenis_pengadaan"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Pengadaan</label>
-                        <input type="text" name="jenis_pengadaan" id="jenis_pengadaan"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Masukan jenis pengadaan" required="" value="{{ old('jenis_pengadaan') }}">
                     </div>
                     <div class="sm:col-span-2">
                         <label for="keterangan"

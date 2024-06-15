@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penempatan;
+use App\Models\RuanganLab;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PenempatanController extends Controller
@@ -15,7 +18,9 @@ class PenempatanController extends Controller
     public function index()
     {
         $data = Penempatan::with('user', 'ruangan')->get();
-        return view('penempatan.index', compact('data'));
+        $ruangan = RuanganLab::all();
+        $user = User::all();
+        return view('penempatan.index', compact('data', 'ruangan', 'user'));
     }
 
     /**
@@ -36,7 +41,29 @@ class PenempatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'nomor_penempatan' => 'required|string|unique:penempatans,nomor_penempatan|max:6',
+            'tanggal_penempatan' => 'required',
+            'ruangan_id' => 'required',
+            'user_id' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $tanggal = $validatedData['tanggal_penempatan'];
+        $date = Carbon::createFromFormat('m/d/Y', $tanggal);
+
+        Carbon::setLocale('id');
+
+        $formatdate = $date->translatedFormat('l, d F Y');
+
+        $validatedData['tanggal_penempatan'] = $formatdate;
+
+        // Simpan data ke database
+        Penempatan::create($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('penempatan')->with('success', 'Penempatan berhasil ditambahkan!');
     }
 
     /**
@@ -70,7 +97,28 @@ class PenempatanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validasi data yang diterima
+        $validatedData = $request->validate([
+            'tanggal_penempatan' => 'required',
+            'ruangan_id' => 'required',
+            'user_id' => 'required',
+            'keterangan' => 'required',
+        ]);
+
+        $tanggal = $validatedData['tanggal_penempatan'];
+        $date = Carbon::createFromFormat('m/d/Y', $tanggal);
+
+        Carbon::setLocale('id');
+
+        $formatdate = $date->translatedFormat('l, d F Y');
+
+        $validatedData['tanggal_penempatan'] = $formatdate;
+
+        // Simpan data ke database
+        Penempatan::where('id', $id)->update($validatedData);
+
+        // Redirect ke halaman yang diinginkan, misalnya index
+        return redirect('penempatan')->with('success', 'Penempatan berhasil di edit!');
     }
 
     /**
@@ -81,6 +129,7 @@ class PenempatanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Penempatan::where('id', $id)->delete();
+        return redirect('penempatan')->with('success', 'Penempatan berhasil di hapus!');
     }
 }
