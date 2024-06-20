@@ -213,7 +213,6 @@
             </table>
         </div>
     </div>
-    @include('peminjaman.show')
     @include('peminjaman.modals.delete')
     @include('peminjaman.modals.edit')
     @include('peminjaman.modals.create')
