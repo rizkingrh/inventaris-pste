@@ -33,28 +33,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/login');
 });
-Route::get('/tesmodal', function () {
-    return view('tesmodal');
+
+Route::group(['middleware' => ['guest']], function () {
+    Route::get('login', [AuthController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('login', [AuthController::class, 'authenticate']);
 });
 
-Route::get('/login', [AuthController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'authenticate']);
-Route::post('/logout', [AuthController::class, 'logout']);
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
-
-Route::resource('barang', BarangController::class)->middleware('auth');
-Route::resource('kategori-barang', KategoriBarangController::class)->middleware('auth');
-Route::resource('level', LevelController::class)->middleware('auth');
-Route::resource('user', UserController::class)->middleware('auth');
-Route::resource('supplier', SupplierController::class)->middleware('auth');
-Route::resource('ruangan-lab', RuanganLabController::class)->middleware('auth');
-Route::resource('barang-inventaris', BarangInventarisController::class)->middleware('auth');
-Route::resource('pengadaan', PengadaanController::class)->middleware('auth');
-Route::resource('pengadaan-item', PengadaanItemController::class)->middleware('auth');
-Route::resource('penempatan', PenempatanController::class)->middleware('auth');
-Route::resource('penempatan-item', PenempatanItemController::class)->middleware('auth');
-Route::resource('mutasi', MutasiController::class)->middleware('auth');
-Route::resource('peminjaman', PeminjamanController::class)->middleware('auth');
-Route::resource('barang-dipinjam', BarangDipinjamController::class)->middleware('auth');
+Route::group(['middleware' => ['auth']], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::resource('barang', BarangController::class);
+    Route::resource('kategori-barang', KategoriBarangController::class);
+    Route::resource('level', LevelController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('supplier', SupplierController::class);
+    Route::resource('ruangan-lab', RuanganLabController::class);
+    Route::resource('barang-inventaris', BarangInventarisController::class);
+    Route::resource('pengadaan', PengadaanController::class);
+    Route::resource('pengadaan-item', PengadaanItemController::class);
+    Route::resource('penempatan', PenempatanController::class);
+    Route::resource('penempatan-item', PenempatanItemController::class);
+    Route::resource('mutasi', MutasiController::class);
+    Route::resource('peminjaman', PeminjamanController::class);
+    Route::resource('barang-dipinjam', BarangDipinjamController::class);
+});
