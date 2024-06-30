@@ -42,13 +42,6 @@ Route::group(['middleware' => ['guest']], function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::get('dashboard', [DashboardController::class, 'index']);
-    Route::resource('barang', BarangController::class);
-    Route::resource('kategori-barang', KategoriBarangController::class);
-    Route::resource('level', LevelController::class);
-    Route::resource('user', UserController::class);
-    Route::resource('supplier', SupplierController::class);
-    Route::resource('ruangan-lab', RuanganLabController::class);
-    Route::resource('barang-inventaris', BarangInventarisController::class);
     Route::resource('pengadaan', PengadaanController::class);
     Route::resource('pengadaan-item', PengadaanItemController::class);
     Route::resource('penempatan', PenempatanController::class);
@@ -56,4 +49,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('mutasi', MutasiController::class);
     Route::resource('peminjaman', PeminjamanController::class);
     Route::resource('barang-dipinjam', BarangDipinjamController::class);
+});
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::resource('barang', BarangController::class);
+    Route::resource('kategori-barang', KategoriBarangController::class);
+    Route::resource('level', LevelController::class);
+    Route::resource('user', UserController::class);
+    Route::resource('supplier', SupplierController::class);
+    Route::resource('ruangan-lab', RuanganLabController::class);
+    Route::resource('barang-inventaris', BarangInventarisController::class);
 });
