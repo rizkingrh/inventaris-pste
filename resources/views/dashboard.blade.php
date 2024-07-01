@@ -8,7 +8,9 @@
 
     <div
         class="bg-white shadow rounded-md p-6 mb-4 flex flex-col md:flex-row items-center md:space-x-4 space-y-4 md:space-y-0">
-        <img src="img/image.jpg" alt="Inventory Image" class="w-[350px]">
+        <div class="w-[350px]">
+            <img src="img/image.jpg" alt="Inventory Image">
+        </div>
         <div class="flex flex-col gap-2">
             <h1 class="text-3xl font-bold text-blue-900">SELAMAT DATANG!</h1>
             <p class="text-xl text-gray-700">
@@ -20,8 +22,8 @@
         </div>
     </div>
 
-    <div class="mb-4 flex flex-row items-center md:space-x-4 space-y-4 md:space-y-0">
-        <div class="flex flex-col items-center flex-auto bg-white shadow rounded-md p-6">
+    <div class="mb-4 flex flex-col items-center gap-4 md:flex-row">
+        <div class="flex flex-col items-center w-full bg-white shadow rounded-md p-6">
             <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-width="1"
@@ -30,7 +32,7 @@
             <p class="text-xl font-bold text-blue-900 mb-1">Total User</p>
             <p class="text-4xl font-semibold">{{ $totalUser }}</p>
         </div>
-        <div class="flex flex-col items-center flex-auto bg-white shadow rounded-md p-6">
+        <div class="flex flex-col items-center w-full bg-white shadow rounded-md p-6">
             <svg class="w-16 h-16 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="none" viewBox="0 0 24 24">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
