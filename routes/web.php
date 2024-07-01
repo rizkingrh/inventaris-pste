@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('peminjaman', PeminjamanController::class);
     Route::resource('barang-dipinjam', BarangDipinjamController::class);
 });
+
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('barang', BarangController::class);
     Route::resource('kategori-barang', KategoriBarangController::class);
