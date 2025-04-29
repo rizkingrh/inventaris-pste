@@ -1,4 +1,4 @@
-# 🔌 Electrical Engineering Laboratory Inventory System ⚡
+# Inventory System 📦
 
 ## 📋 Project Overview
 This project is a inventory management system designed specifically for electrical engineering department laboratories. The system aims to streamline the tracking of laboratory equipment, components, and supplies while providing an intuitive interface for staff and students. Built with modern web technologies, this application offers a robust solution for managing laboratory assets, tracking usage, and maintaining supplier information.
