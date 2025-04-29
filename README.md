@@ -1,61 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 🔌 Electrical Engineering Laboratory Inventory System ⚡
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## 📋 Project Overview
+This project is a inventory management system designed specifically for electrical engineering department laboratories. The system aims to streamline the tracking of laboratory equipment, components, and supplies while providing an intuitive interface for staff and students. Built with modern web technologies, this application offers a robust solution for managing laboratory assets, tracking usage, and maintaining supplier information.
 
-## About Laravel
+This project was created as part of a college database design course to address the real-world need for efficient inventory management in electrical engineering laboratories. Traditional paper-based inventory methods or generic inventory systems often fail to address the unique requirements of electrical engineering labs, such as tracking specialized components, managing equipment calibration schedules, and monitoring the usage of consumable supplies. This system was built to fill that gap and provide a tailored solution that improves operational efficiency, reduces equipment downtime, and helps maintain adequate stock levels of critical components.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Key Features
+- **User Authentication & Authorization**: Secure login system with role-based access control
+- **Inventory Management**: Track laboratory equipment, components, and supplies
+- **User Management**: Admin dashboard to manage system users and their permissions
+- **Supplier Directory**: Maintain and access supplier contact information
+- **Search Functionality**: Quickly find items in the inventory with advanced filtering
+- **Responsive Design**: User-friendly interface accessible on various devices
+- **Modal Forms**: Intuitive forms for adding and editing inventory items
+- **Database Integration**: Robust MySQL database with optimized schema design
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🖼️ Preview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Login Screen
+![Login Screen](assets/login.png)
 
-## Learning Laravel
+### Dashboard
+![Home Dashboard](assets/home.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### User Management
+![User List](assets/daftar_user.png)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Inventory Items
+![Item List](assets/daftar_barang.png)
 
-## Laravel Sponsors
+### Supplier Management
+![Supplier List](assets/supplier.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Item Entry Form
+![Modal Form](assets/modal_form.png)
 
-### Premium Partners
+### Search Functionality
+![Search Features](assets/search_features.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+### Database Design
+![ERD Diagram](assets/erd.png)
 
-## Contributing
+### Complete Mockup
+[View Full Figma Mockup](https://drive.google.com/file/d/1kogj5yKyyR48F4PgfXbCA97CmMayh413/view?usp=sharing)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🛠️ Technologies
+- **Frontend** 💻:
+  - HTML5, CSS3, JavaScript
+  - Tailwind CSS for responsive design
+  - Figma for UI/UX design and prototyping
 
-## Code of Conduct
+- **Backend** 🔧:
+  - Laravel PHP Framework
+  - RESTful API architecture
+  - Authentication middleware
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- **Database** 💾:
+  - MySQL
+  - MySQL Workbench for database design and ERD creation
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 🚀 Future Improvements
+- **Barcode/QR Code Integration**: For quick scanning and tracking of inventory items
+- **Equipment Reservation System**: Allow users to reserve equipment for specific time slots
+- **Maintenance Tracking**: Record and schedule maintenance activities for laboratory equipment
+- **Reporting Module**: Generate detailed reports on inventory status, usage patterns, and procurement needs
+- **Mobile Application**: Develop a companion mobile app for on-the-go inventory management
+- **Notification System**: Automated alerts for low stock, maintenance due dates, etc.
+- **Bulk Import/Export**: Feature to bulk upload or download inventory data
