@@ -46,7 +46,7 @@ This project was created as part of a college database design course to address 
 
 ## 🛠️ Technologies
 - **Frontend** 💻:
-  - HTML5, CSS3, JavaScript
+  - HTML, CSS, JavaScript
   - Tailwind CSS for responsive design
   - Figma for UI/UX design and prototyping
 
