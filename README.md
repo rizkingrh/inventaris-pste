@@ -8,12 +8,14 @@ This project was created as part of a college database design course to address 
 ## ✨ Key Features
 - **User Authentication & Authorization**: Secure login system with role-based access control
 - **Inventory Management**: Track laboratory equipment, components, and supplies
+- **Loan System**: User can borrow items, and track the items
 - **User Management**: Admin dashboard to manage system users and their permissions
 - **Supplier Directory**: Maintain and access supplier contact information
 - **Search Functionality**: Quickly find items in the inventory with advanced filtering
 - **Responsive Design**: User-friendly interface accessible on various devices
 - **Modal Forms**: Intuitive forms for adding and editing inventory items
 - **Database Integration**: Robust MySQL database with optimized schema design
+
 
 ## 🖼️ Preview
 
